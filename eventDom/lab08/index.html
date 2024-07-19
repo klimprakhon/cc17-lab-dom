@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab8</title>
+  </head>
+  <body>
+    <button>Hide</button>
+    <h1>
+      Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur vero
+      optio voluptatem autem saepe, magnam officia, et eius aut quod alias
+      expedita libero aliquam minus voluptas cum animi sequi asperiores.
+    </h1>
+    <script>
+      const h1 = document.querySelector("h1");
+      const button = document.querySelector("button");
+      function showAndHide(even) {
+        console.log(even);
+        if (button.textContent === "Show") {
+          button.textContent = "Hide";
+          h1.removeAttribute("hidden");
+        } else {
+          button.textContent = "Show";
+          h1.setAttribute("hidden", true);
+        }
+      }
+      button.addEventListener("click", showAndHide);
+    </script>
+  </body>
+</html>

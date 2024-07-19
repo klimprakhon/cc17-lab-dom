@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab10</title>
+  </head>
+  <body>
+    <label for="province">Province : </label>
+    <select name="province" id="province">
+      <option value="select" hidden>Select</option>
+      <option value="bangkok">Bangkok</option>
+      <option value="buriram">Buriram</option>
+      <option value="NakhonRatchasima">Nakhon Ratchasima</option>
+    </select>
+    <br />
+    <br />
+    <label for="district">District : </label>
+    <select name="district" id="district">
+      <option value="select">select</option>
+    </select>
+    <script>
+      const allDistrictOption = {
+        bangkok: [
+          "เขตคลองเตย",
+          "เขตคลองสาน",
+          "เขตคลองสามวา",
+          "เขตคันนายาว",
+          "เขตจตุจักร",
+        ],
+        buriram: ["เมือง", "ห้วยราช", "พลับพลาชัย", "บ้านด่าน"],
+        NakhonRatchasima: ["เมือง", "ขามทะเลสอ", "โนนไทย"],
+      };
+      const province = document.querySelector("#province");
+      const district = document.querySelector("#district");
+      province.addEventListener("change", changeDistrict);
+
+      function changeDistrict(even) {
+        district.innerHTML = "<option value='select' hidden >select</option>";
+        for (let item of allDistrictOption[even.target.value]) {
+          district.innerHTML += `<option value="${item}">${item}</option>`;
+        }
+      }
+    </script>
+  </body>
+</html>

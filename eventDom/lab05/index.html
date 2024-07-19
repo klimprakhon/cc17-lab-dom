@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab5</title>
+  </head>
+  <body>
+    <input
+      type="text"
+      name="nickname"
+      onclick="logAttributeName(event)"
+      oninput="logInputValue(event)"
+      placeholder="Enter your nickname"
+    /><br />
+    <input
+      type="text"
+      name="job"
+      onclick="logAttributeName(event)"
+      oninput="logInputValue(event)"
+      placeholder="Enter your job"
+    />
+
+    <script>
+      function logAttributeName(event) {
+        var inputName = event.target.getAttribute("name");
+        console.log("Clicked input name:", inputName);
+      }
+
+      function logInputValue(event) {
+        var inputValue = event.target.value;
+        console.log("Input value:", inputValue);
+      }
+    </script>
+  </body>
+</html>

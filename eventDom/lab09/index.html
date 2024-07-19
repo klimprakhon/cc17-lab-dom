@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab9</title>
+    <!-- <style>
+     input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    } -->
+    <!-- </style> -->
+  </head>
+  <body>
+    <input type="text" />
+    <button>Check</button>
+    <p></p>
+    <script>
+      const p = document.querySelector("p");
+      const input = document.querySelector("input");
+      const button = document.querySelector("button");
+      function buttonClick(even) {
+        console.log(input.value);
+        if (input.value.trim() === "") {
+          p.textContent = "Phone Number is required";
+        } else if (isNaN(input.value)) {
+          p.textContent = "Phone Number is invalid";
+        } else if (input.value.length !== 10) {
+          p.textContent = "Invalid Length";
+        } else {
+          p.textContent = "";
+          alert("Your number is valid");
+        }
+      }
+      button.addEventListener("click", buttonClick);
+    </script>
+  </body>
+</html>

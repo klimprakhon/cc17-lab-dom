@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lab12</title>
+    <style>
+      * {
+        margin-right: 5px;
+        padding: 0;
+      }
+      .showItem-item > * {
+        display: inline-block;
+      }
+      .display-none {
+        display: none;
+      }
+      .line-through {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="add">Add</button>
+    <div class="showItem"></div>
+
+    <script>
+      const add = document.querySelector("#add");
+      const showItem = document.querySelector(".showItem");
+      add.addEventListener("click", addItem);
+      let count = 1;
+      function addItem() {
+        showItem.innerHTML += `<div id="div${count}" class="showItem-item"><input class="display-none" type="text" id="input${count}" ><h3 id="h${count}">task ${count}</h3><button id="edit${count}">edit</button><button id="del${count}">Del</button></div>`;
+        count++;
+      }
+      showItem.addEventListener("click", changeItem);
+      function changeItem(even) {
+        let numberTarger = even.target.id.match(/\d+/g).map(Number);
+        console.log(even.target);
+        console.log(even.target.textContent);
+        if (even.target.textContent == "Del") {
+          document
+            .querySelector(`#div${even.target.id.match(/\d+/g).map(Number)}`)
+            .remove();
+        } else if (even.target.textContent == "edit") {
+          document
+            .getElementById(`input${numberTarger}`)
+            .classList.remove("display-none");
+          document
+            .getElementById(`h${numberTarger}`)
+            .classList.add("display-none");
+          even.target.textContent = "set";
+        } else if (even.target.textContent == "set") {
+          document.getElementById(`h${numberTarger}`).textContent =
+            document.getElementById(`input${numberTarger}`).value;
+          document
+            .getElementById(`h${numberTarger}`)
+            .classList.remove("display-none");
+          document
+            .getElementById(`input${numberTarger}`)
+            .classList.add("display-none");
+          even.target.textContent = "edit";
+        } else if (even.target.tagName == "H3") {
+          document
+            .getElementById(`h${numberTarger}`)
+            .classList.contains("line-through")
+            ? document
+                .getElementById(`h${numberTarger}`)
+                .classList.remove("line-through")
+            : document
+                .getElementById(`h${numberTarger}`)
+                .classList.add("line-through");
+        }
+      }
+    </script>
+  </body>
+</html>
